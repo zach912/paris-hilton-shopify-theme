@@ -25,25 +25,11 @@
     .preview-label::before { content: '//'; opacity: 0.4; }
     .preview-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; margin-bottom: 20px; }
 
-    /* Fake hero bg for preview */
-    .hero-preview-bg {
-      background: linear-gradient(135deg, #0A0A0A 0%, #2d0a1e 60%, #1a0a12 100%);
-    }
-    .hero-preview-bg .hero__overlay { opacity: 0.6; background: none; }
-
     /* Product card preview sizing */
     .product-card-preview-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
-    }
-    .fake-product-img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 60px;
     }
   </style>
 </head>
@@ -101,8 +87,11 @@
 <!-- ═══════════════════════════════════ -->
 <!-- HERO BANNER -->
 <!-- ═══════════════════════════════════ -->
-<section class="hero hero-preview-bg">
-  <div class="hero__overlay"></div>
+<section class="hero">
+  <div class="hero__media">
+    <img src="assets/images/paris-coachella.jpg" alt="Paris Hilton" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;">
+    <div class="hero__overlay" style="background:linear-gradient(135deg,rgba(10,10,10,0.55) 0%,rgba(240,78,152,0.12) 100%);"></div>
+  </div>
   <div class="container">
     <div class="hero__content">
       <p class="hero__eyebrow">New Collection</p>
@@ -167,15 +156,15 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </button>
           <a href="#">
-            <div class="fake-product-img" style="background:var(--pink-ultra);">💄</div>
+            <img src="assets/images/handbag-1.jpeg" alt="Amour Heart Bag" style="width:100%;aspect-ratio:3/4;object-fit:cover;">
           </a>
           <div class="product-card__quick-add">
             <button class="btn btn-white btn-sm btn-full">Quick Add ✨</button>
           </div>
         </div>
         <div class="product-card__info">
-          <p class="product-card__vendor">Paris Hilton Beauty</p>
-          <a href="#" class="product-card__title">Iconic Glow Serum</a>
+          <p class="product-card__vendor">Paris Hilton Fashion</p>
+          <a href="#" class="product-card__title">Amour Heart Chain Bag</a>
           <div class="product-card__stars"><span class="stars">★★★★★</span><span class="stars-count">(247)</span></div>
           <div class="product-card__price">
             <span class="price price-sale">$49.00</span>
@@ -194,7 +183,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </button>
           <a href="#">
-            <div class="fake-product-img" style="background:#FEF0F7;">👑</div>
+            <img src="assets/images/fragrance-1.jpeg" alt="Iconic Perfume" style="width:100%;aspect-ratio:3/4;object-fit:cover;">
           </a>
           <div class="product-card__quick-add">
             <button class="btn btn-white btn-sm btn-full">Quick Add ✨</button>
@@ -202,7 +191,7 @@
         </div>
         <div class="product-card__info">
           <p class="product-card__vendor">Paris Hilton</p>
-          <a href="#" class="product-card__title">That's Hot Perfume EDP</a>
+          <a href="#" class="product-card__title">Iconic EDP</a>
           <div class="product-card__stars"><span class="stars">★★★★★</span><span class="stars-count">(1,204)</span></div>
           <div class="product-card__price">
             <span class="price">$95.00</span>
@@ -225,15 +214,15 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </button>
           <a href="#">
-            <div class="fake-product-img" style="background:#FFF5FA;">💎</div>
+            <img src="assets/images/kitchen-1.jpeg" alt="#BeAnIcon Tumblers" style="width:100%;aspect-ratio:3/4;object-fit:cover;">
           </a>
           <div class="product-card__quick-add">
             <button class="btn btn-white btn-sm btn-full">Quick Add ✨</button>
           </div>
         </div>
         <div class="product-card__info">
-          <p class="product-card__vendor">Paris Hilton Fashion</p>
-          <a href="#" class="product-card__title">Rhinestone Mini Bag</a>
+          <p class="product-card__vendor">Paris Hilton Home</p>
+          <a href="#" class="product-card__title">#BeAnIcon Studded Tumblers</a>
           <div class="product-card__stars"><span class="stars">★★★★☆</span><span class="stars-count">(89)</span></div>
           <div class="product-card__price">
             <span class="price">$185.00</span>
@@ -248,15 +237,15 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </button>
           <a href="#">
-            <div class="fake-product-img" style="background:#FDF5FA;">🌸</div>
+            <img src="assets/images/kitchen-2.jpg" alt="Pink & Gold Utensils" style="width:100%;aspect-ratio:3/4;object-fit:cover;">
           </a>
           <div class="product-card__quick-add">
             <a href="#" class="btn btn-white btn-sm btn-full">Choose Options</a>
           </div>
         </div>
         <div class="product-card__info">
-          <p class="product-card__vendor">Paris Hilton Beauty</p>
-          <a href="#" class="product-card__title">Sliving Lip Kit</a>
+          <p class="product-card__vendor">Paris Hilton Kitchen</p>
+          <a href="#" class="product-card__title">Pink & Gold Utensil Set</a>
           <div class="product-card__stars"><span class="stars">★★★★★</span><span class="stars-count">(512)</span></div>
           <div class="product-card__price">
             <span class="price">$38.00</span>
@@ -282,7 +271,7 @@
     </div>
     <div class="category-grid">
       <a href="#" class="category-card">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#2d0a1e,#F04E98 200%);"></div>
+        <img src="assets/images/paris-1.jpg" alt="Beauty" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
         <div class="category-card__overlay"></div>
         <div class="category-card__content">
           <h3 class="category-card__title">Beauty</h3>
@@ -290,7 +279,7 @@
         </div>
       </a>
       <a href="#" class="category-card">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0a2d,#4e4eF0 200%);"></div>
+        <img src="assets/images/handbag-2.jpg" alt="Fashion" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
         <div class="category-card__overlay"></div>
         <div class="category-card__content">
           <h3 class="category-card__title">Fashion</h3>
@@ -298,7 +287,7 @@
         </div>
       </a>
       <a href="#" class="category-card">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a0a0a,#C9A84C 200%);"></div>
+        <img src="assets/images/fragrance-2.jpg" alt="Fragrance" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
         <div class="category-card__overlay"></div>
         <div class="category-card__content">
           <h3 class="category-card__title">Fragrance</h3>
@@ -316,7 +305,7 @@
   <div class="container">
     <div class="image-with-text">
       <div class="image-with-text__media">
-        <div style="width:100%;height:100%;min-height:520px;background:linear-gradient(135deg,#F04E98,#F99FC9);display:flex;align-items:center;justify-content:center;font-size:100px;">✨</div>
+        <img src="assets/images/paris-2.jpg" alt="Paris Hilton" style="width:100%;height:100%;min-height:520px;object-fit:cover;object-position:center top;">
       </div>
       <div class="image-with-text__content">
         <p class="image-with-text__eyebrow">Our Story</p>
@@ -344,14 +333,14 @@
       <!-- Gallery -->
       <div class="product-gallery" style="position:static;">
         <div class="product-gallery__main">
-          <div style="width:100%;height:100%;min-height:500px;background:var(--pink-ultra);display:flex;align-items:center;justify-content:center;font-size:120px;">👑</div>
+          <img id="ProductFeaturedImage" src="assets/images/fragrance-2.jpg" alt="Iconic EDP" style="width:100%;height:100%;object-fit:cover;object-position:center top;min-height:500px;">
         </div>
         <div class="product-gallery__thumbs">
-          <div class="product-gallery__thumb active"><div style="width:100%;aspect-ratio:1;background:var(--pink-ultra);display:flex;align-items:center;justify-content:center;">💄</div></div>
-          <div class="product-gallery__thumb"><div style="width:100%;aspect-ratio:1;background:#FEF0F7;display:flex;align-items:center;justify-content:center;">💎</div></div>
-          <div class="product-gallery__thumb"><div style="width:100%;aspect-ratio:1;background:#FFF5FA;display:flex;align-items:center;justify-content:center;">🌸</div></div>
-          <div class="product-gallery__thumb"><div style="width:100%;aspect-ratio:1;background:var(--pink-ultra);display:flex;align-items:center;justify-content:center;">✨</div></div>
-          <div class="product-gallery__thumb"><div style="width:100%;aspect-ratio:1;background:#FEF0F7;display:flex;align-items:center;justify-content:center;">💖</div></div>
+          <div class="product-gallery__thumb active"><img src="assets/images/fragrance-2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="product-gallery__thumb"><img src="assets/images/fragrance-1.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="product-gallery__thumb"><img src="assets/images/handbag-1.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="product-gallery__thumb"><img src="assets/images/handbag-2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+          <div class="product-gallery__thumb"><img src="assets/images/paris-1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
         </div>
       </div>
 
@@ -543,9 +532,9 @@
 
   <div class="cart-drawer__items">
     <div class="cart-item">
-      <div class="cart-item__img" style="background:var(--pink-ultra);width:80px;height:80px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;">💄</div>
+      <img class="cart-item__img" src="assets/images/handbag-1.jpeg" alt="Amour Heart Chain Bag" style="width:80px;height:80px;border-radius:8px;object-fit:cover;flex-shrink:0;">
       <div class="cart-item__body">
-        <p class="cart-item__title">Iconic Glow Serum</p>
+        <p class="cart-item__title">Amour Heart Chain Bag</p>
         <p class="cart-item__variant">30ml</p>
         <div class="cart-item__footer">
           <div class="cart-item__qty">
@@ -559,9 +548,9 @@
       </div>
     </div>
     <div class="cart-item">
-      <div class="cart-item__img" style="background:#FEF0F7;width:80px;height:80px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;">👑</div>
+      <img class="cart-item__img" src="assets/images/fragrance-1.jpeg" alt="Iconic EDP" style="width:80px;height:80px;border-radius:8px;object-fit:cover;flex-shrink:0;">
       <div class="cart-item__body">
-        <p class="cart-item__title">That's Hot Perfume EDP</p>
+        <p class="cart-item__title">Iconic EDP</p>
         <p class="cart-item__variant">100ml</p>
         <div class="cart-item__footer">
           <div class="cart-item__qty">
