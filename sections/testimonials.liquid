@@ -1,0 +1,164 @@
+<section class="section-gap testimonials">
+  <div class="container">
+
+    <div class="section-header" data-animate>
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="section-header__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="section-header__title">{{ section.settings.title }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="section-header__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="testimonials-grid">
+      {%- for block in section.blocks -%}
+        <div class="testimonial-card" {{ block.shopify_attributes }}>
+          <div class="testimonial-card__stars">
+            {%- assign stars = block.settings.rating -%}
+            {%- for i in (1..5) -%}
+              {%- if i <= stars -%}★{%- else -%}☆{%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          <p class="testimonial-card__quote">{{ block.settings.quote }}</p>
+
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">
+              {%- if block.settings.avatar != blank -%}
+                <img src="{{ block.settings.avatar | image_url: width: 80 }}" alt="{{ block.settings.name }}" style="width:100%;height:100%;object-fit:cover;">
+              {%- else -%}
+                💖
+              {%- endif -%}
+            </div>
+            <div>
+              <p class="testimonial-card__name">{{ block.settings.name }}</p>
+              {%- if block.settings.handle != blank -%}
+                <p class="testimonial-card__handle">{{ block.settings.handle }}</p>
+              {%- endif -%}
+              {%- if block.settings.verified -%}
+                <p class="testimonial-card__verified">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--pink-hot)">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  Verified Buyer
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Reviews Are In"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "They Said It's Iconic"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Real reviews from the sliving fam. 💖"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Rating",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review text",
+          "default": "Obsessed with everything — it's literally so iconic and the quality is amazing. I feel like a whole new person every time I wear it. That's hot! 💖"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Reviewer name",
+          "default": "Aria M."
+        },
+        {
+          "type": "text",
+          "id": "handle",
+          "label": "Social handle",
+          "default": "@aria_slives"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified buyer",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "name": "Aria M.",
+            "handle": "@aria_slives",
+            "quote": "Obsessed with everything — it's literally so iconic and the quality is amazing. I feel like a whole new person every time I wear it. That's hot! 💖",
+            "rating": 5,
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Jordan K.",
+            "handle": "@jordank_sparkles",
+            "quote": "Just got my order and I'm literally crying? The packaging alone made me feel like Paris herself shipped it. I will never shop anywhere else. Sliving! ✨",
+            "rating": 5,
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "name": "Riley T.",
+            "handle": "@rileyt",
+            "quote": "Gift for my bestie and she absolutely lost it. The quality is insane, way better than expected. Both of us are now Paris-coded for life 💎",
+            "rating": 5,
+            "verified": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

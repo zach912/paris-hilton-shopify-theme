@@ -1,0 +1,68 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter store password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter ✨",
+      "login_form_error": "Wrong password, bestie. Try again.",
+      "powered_by_shopify_html": "This store is powered by {{ shopify }}"
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content"
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Bag ✨",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "reviews": "reviews"
+    },
+    "general": {
+      "sale": "Sale",
+      "new": "New ✨",
+      "bestseller": "Bestseller"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Bag 💖",
+      "empty": "Your bag is empty",
+      "empty_html": "Time to add some sparkle! <a href=\"/collections/all\">Shop now ✨</a>",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout — That's Hot 💖",
+      "update": "Update Cart",
+      "continue_browsing": "Continue Shopping",
+      "item_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    }
+  },
+  "collection": {
+    "general": {
+      "results_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
+    },
+    "sorting": {
+      "title": "Sort by",
+      "manual": "Featured",
+      "best_selling": "Best Selling",
+      "title_ascending": "A–Z",
+      "title_descending": "Z–A",
+      "price_ascending": "Price: Low–High",
+      "price_descending": "Price: High–Low",
+      "created_ascending": "Oldest",
+      "created_descending": "Newest"
+    }
+  }
+}

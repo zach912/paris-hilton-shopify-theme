@@ -1,0 +1,149 @@
+{
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "msg1": {
+          "type": "message",
+          "settings": {
+            "text": "✨ Free shipping on orders over $100 — That's Hot 💖"
+          }
+        }
+      },
+      "block_order": ["msg1"],
+      "settings": {
+        "show_bar": true,
+        "show_dismiss": true
+      }
+    },
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "eyebrow": "New Collection",
+        "title": "Leave A Little Sparkle",
+        "subtitle": "Discover the latest drops from Paris Hilton — iconic, sliving, and made for you. 💖",
+        "button_label": "Shop Now ✨",
+        "button_link": "/collections/all",
+        "button_2_label": "Watch the Drop",
+        "min_height": 700,
+        "overlay_opacity": 55,
+        "content_align": "left",
+        "show_scroll_indicator": true
+      }
+    },
+    "marquee": {
+      "type": "marquee-strip",
+      "blocks": {
+        "item1": { "type": "item", "settings": { "text": "That's Hot ✦" } },
+        "item2": { "type": "item", "settings": { "text": "Sliving ✦" } },
+        "item3": { "type": "item", "settings": { "text": "Iconic ✦" } },
+        "item4": { "type": "item", "settings": { "text": "Loves It ✦" } },
+        "item5": { "type": "item", "settings": { "text": "Sparkle ✦" } },
+        "item6": { "type": "item", "settings": { "text": "Glam ✦" } }
+      },
+      "block_order": ["item1","item2","item3","item4","item5","item6"],
+      "settings": {
+        "background_color": "#F04E98",
+        "text_color": "#FFFFFF"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "New Drops",
+        "title": "Shop The Collection",
+        "subtitle": "Iconic pieces, sliving looks. That's hot. 💖",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "view_all_label": "All Products",
+        "background": "white"
+      }
+    },
+    "categories": {
+      "type": "category-grid",
+      "blocks": {
+        "cat1": { "type": "category", "settings": { "title": "Beauty" } },
+        "cat2": { "type": "category", "settings": { "title": "Fashion" } },
+        "cat3": { "type": "category", "settings": { "title": "Fragrance" } }
+      },
+      "block_order": ["cat1","cat2","cat3"],
+      "settings": {
+        "eyebrow": "Shop By Category",
+        "title": "Find Your Sparkle"
+      }
+    },
+    "image_with_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "image_first",
+        "eyebrow": "Our Story",
+        "title": "Born To Sparkle",
+        "text": "<p>Paris Hilton has always believed your sparkle is your superpower. These are pieces made for the iconic, the bold, and the beautifully real — because sliving isn't a trend, it's a lifestyle. 💫</p>",
+        "button_label": "Discover More",
+        "button_style": "primary"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "rev1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Obsessed with everything — it's literally so iconic and the quality is amazing. I feel like a whole new person every time I wear it. That's hot! 💖",
+            "name": "Aria M.",
+            "handle": "@aria_slives",
+            "verified": true
+          }
+        },
+        "rev2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Just got my order and I'm literally crying? The packaging alone made me feel like Paris herself shipped it. I will never shop anywhere else. Sliving! ✨",
+            "name": "Jordan K.",
+            "handle": "@jordank_sparkles",
+            "verified": true
+          }
+        },
+        "rev3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Gift for my bestie and she absolutely lost it. The quality is insane, way better than expected. Both of us are now Paris-coded for life 💎",
+            "name": "Riley T.",
+            "handle": "@rileyt",
+            "verified": true
+          }
+        }
+      },
+      "block_order": ["rev1","rev2","rev3"],
+      "settings": {
+        "eyebrow": "The Reviews Are In",
+        "title": "They Said It's Iconic",
+        "subtitle": "Real reviews from the sliving fam. 💖"
+      }
+    },
+    "email_signup": {
+      "type": "email-signup",
+      "settings": {
+        "eyebrow": "Join The Sliving Fam",
+        "title": "Get [pink]First Access[/pink] To New Drops",
+        "subtitle": "Sign up for exclusive drops, behind-the-scenes sparkle, and 15% off your first order. 💖",
+        "input_placeholder": "Enter your email...",
+        "button_label": "Join ✨",
+        "disclaimer": "By subscribing you agree to our Privacy Policy. Unsubscribe anytime."
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "hero",
+    "marquee",
+    "featured_collection",
+    "categories",
+    "image_with_text",
+    "testimonials",
+    "email_signup"
+  ]
+}

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paris Hilton Theme — Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+  <style>
+    /* Preview-only overrides */
+    .preview-section { padding: 40px 0; border-bottom: 1px dashed rgba(240,78,152,0.2); }
+    .preview-label {
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--pink-hot);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .preview-label::before { content: '//'; opacity: 0.4; }
+    .preview-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; margin-bottom: 20px; }
+
+    /* Fake hero bg for preview */
+    .hero-preview-bg {
+      background: linear-gradient(135deg, #0A0A0A 0%, #2d0a1e 60%, #1a0a12 100%);
+    }
+    .hero-preview-bg .hero__overlay { opacity: 0.6; background: none; }
+
+    /* Product card preview sizing */
+    .product-card-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .fake-product-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ -->
+<!-- ANNOUNCEMENT BAR -->
+<!-- ═══════════════════════════════════ -->
+<div class="announcement-bar">
+  <div class="announcement-bar__content">
+    <span class="announcement-bar__sparkle">✦</span>
+    <span>✨ Free shipping on orders over $100 — That's Hot 💖</span>
+    <span class="announcement-bar__sparkle">✦</span>
+  </div>
+  <button class="announcement-bar__dismiss" aria-label="Dismiss">✕</button>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- HEADER -->
+<!-- ═══════════════════════════════════ -->
+<header class="site-header scrolled" style="position:relative;z-index:10;">
+  <div class="container">
+    <div class="header-inner">
+      <nav class="header-nav">
+        <a href="#" class="header-nav__link">Shop</a>
+        <a href="#" class="header-nav__link">Beauty</a>
+        <a href="#" class="header-nav__link">Fashion</a>
+        <a href="#" class="header-nav__link">Fragrance</a>
+      </nav>
+      <div class="header-logo">
+        <a href="#">
+          <span class="header-logo__wordmark">Paris Hilton</span>
+          <span class="header-logo__sub">✦ Official Store ✦</span>
+        </a>
+      </div>
+      <div class="header-actions">
+        <button class="header-icon-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="header-icon-btn" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="header-icon-btn" style="position:relative;" aria-label="Cart" id="cart-trigger" data-cart-trigger>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count" data-cart-count data-count="3">3</span>
+        </button>
+        <button class="header-mobile-menu-btn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════ -->
+<!-- HERO BANNER -->
+<!-- ═══════════════════════════════════ -->
+<section class="hero hero-preview-bg">
+  <div class="hero__overlay"></div>
+  <div class="container">
+    <div class="hero__content">
+      <p class="hero__eyebrow">New Collection</p>
+      <h1 class="hero__title">Leave A Little <em>Sparkle</em></h1>
+      <p class="hero__subtitle">Discover the latest drops from Paris Hilton — iconic, sliving, and made for you. 💖</p>
+      <div class="hero__ctas">
+        <a href="#" class="btn btn-primary btn-lg">Shop Now ✨</a>
+        <a href="#" class="btn btn-white btn-lg">Watch the Drop</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll-indicator" aria-hidden="true">
+    <span>Scroll</span>
+    <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+      <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="8" cy="7" r="2" fill="currentColor">
+        <animateTransform attributeName="transform" type="translate" values="0,0;0,8;0,0" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- MARQUEE STRIP -->
+<!-- ═══════════════════════════════════ -->
+<div class="marquee-strip">
+  <div class="marquee-strip__inner">
+    <span class="marquee-strip__item">That's Hot ✦</span>
+    <span class="marquee-strip__item">Sliving ✦</span>
+    <span class="marquee-strip__item">Iconic ✦</span>
+    <span class="marquee-strip__item">Loves It ✦</span>
+    <span class="marquee-strip__item">Sparkle ✦</span>
+    <span class="marquee-strip__item">Glam ✦</span>
+    <span class="marquee-strip__item">That's Hot ✦</span>
+    <span class="marquee-strip__item">Sliving ✦</span>
+    <span class="marquee-strip__item">Iconic ✦</span>
+    <span class="marquee-strip__item">Loves It ✦</span>
+    <span class="marquee-strip__item">Sparkle ✦</span>
+    <span class="marquee-strip__item">Glam ✦</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- FEATURED COLLECTION -->
+<!-- ═══════════════════════════════════ -->
+<section class="section-gap">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-header__eyebrow">New Drops</p>
+      <h2 class="section-header__title">Shop The Collection</h2>
+      <p class="section-header__subtitle">Iconic pieces, sliving looks. That's hot. 💖</p>
+    </div>
+    <div class="product-card-preview-grid">
+
+      <!-- Card 1 — Sale -->
+      <div class="product-card">
+        <div class="product-card__media">
+          <div class="product-card__badges">
+            <span class="badge badge-pink">–30%</span>
+          </div>
+          <button class="product-card__wishlist">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <a href="#">
+            <div class="fake-product-img" style="background:var(--pink-ultra);">💄</div>
+          </a>
+          <div class="product-card__quick-add">
+            <button class="btn btn-white btn-sm btn-full">Quick Add ✨</button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <p class="product-card__vendor">Paris Hilton Beauty</p>
+          <a href="#" class="product-card__title">Iconic Glow Serum</a>
+          <div class="product-card__stars"><span class="stars">★★★★★</span><span class="stars-count">(247)</span></div>
+          <div class="product-card__price">
+            <span class="price price-sale">$49.00</span>
+            <span class="price-compare">$69.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 — Bestseller -->
+      <div class="product-card">
+        <div class="product-card__media">
+          <div class="product-card__badges">
+            <span class="badge badge-gold">Bestseller ✦</span>
+          </div>
+          <button class="product-card__wishlist">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <a href="#">
+            <div class="fake-product-img" style="background:#FEF0F7;">👑</div>
+          </a>
+          <div class="product-card__quick-add">
+            <button class="btn btn-white btn-sm btn-full">Quick Add ✨</button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <p class="product-card__vendor">Paris Hilton</p>
+          <a href="#" class="product-card__title">That's Hot Perfume EDP</a>
+          <div class="product-card__stars"><span class="stars">★★★★★</span><span class="stars-count">(1,204)</span></div>
+          <div class="product-card__price">
+            <span class="price">$95.00</span>
+          </div>
+          <div class="product-card__color-swatches">
+            <div class="color-swatch active" style="background:#F04E98;" title="Pink"></div>
+            <div class="color-swatch" style="background:#C9A84C;" title="Gold"></div>
+            <div class="color-swatch" style="background:#0A0A0A;" title="Black"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 — New -->
+      <div class="product-card">
+        <div class="product-card__media">
+          <div class="product-card__badges">
+            <span class="badge badge-light">New ✨</span>
+          </div>
+          <button class="product-card__wishlist">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <a href="#">
+            <div class="fake-product-img" style="background:#FFF5FA;">💎</div>
+          </a>
+          <div class="product-card__quick-add">
+            <button class="btn btn-white btn-sm btn-full">Quick Add ✨</button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <p class="product-card__vendor">Paris Hilton Fashion</p>
+          <a href="#" class="product-card__title">Rhinestone Mini Bag</a>
+          <div class="product-card__stars"><span class="stars">★★★★☆</span><span class="stars-count">(89)</span></div>
+          <div class="product-card__price">
+            <span class="price">$185.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 — Normal -->
+      <div class="product-card">
+        <div class="product-card__media">
+          <button class="product-card__wishlist">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <a href="#">
+            <div class="fake-product-img" style="background:#FDF5FA;">🌸</div>
+          </a>
+          <div class="product-card__quick-add">
+            <a href="#" class="btn btn-white btn-sm btn-full">Choose Options</a>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <p class="product-card__vendor">Paris Hilton Beauty</p>
+          <a href="#" class="product-card__title">Sliving Lip Kit</a>
+          <div class="product-card__stars"><span class="stars">★★★★★</span><span class="stars-count">(512)</span></div>
+          <div class="product-card__price">
+            <span class="price">$38.00</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="text-center" style="margin-top:48px;">
+      <a href="#" class="btn btn-secondary btn-lg">View All Products <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- CATEGORY GRID -->
+<!-- ═══════════════════════════════════ -->
+<section class="section-gap" style="background:var(--white);">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-header__eyebrow">Shop By Category</p>
+      <h2 class="section-header__title">Find Your Sparkle</h2>
+    </div>
+    <div class="category-grid">
+      <a href="#" class="category-card">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#2d0a1e,#F04E98 200%);"></div>
+        <div class="category-card__overlay"></div>
+        <div class="category-card__content">
+          <h3 class="category-card__title">Beauty</h3>
+          <span class="category-card__cta">Shop Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a href="#" class="category-card">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0a2d,#4e4eF0 200%);"></div>
+        <div class="category-card__overlay"></div>
+        <div class="category-card__content">
+          <h3 class="category-card__title">Fashion</h3>
+          <span class="category-card__cta">Shop Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a href="#" class="category-card">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a0a0a,#C9A84C 200%);"></div>
+        <div class="category-card__overlay"></div>
+        <div class="category-card__content">
+          <h3 class="category-card__title">Fragrance</h3>
+          <span class="category-card__cta">Shop Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- IMAGE WITH TEXT -->
+<!-- ═══════════════════════════════════ -->
+<section class="section-gap">
+  <div class="container">
+    <div class="image-with-text">
+      <div class="image-with-text__media">
+        <div style="width:100%;height:100%;min-height:520px;background:linear-gradient(135deg,#F04E98,#F99FC9);display:flex;align-items:center;justify-content:center;font-size:100px;">✨</div>
+      </div>
+      <div class="image-with-text__content">
+        <p class="image-with-text__eyebrow">Our Story</p>
+        <h2 class="image-with-text__title">Born To Sparkle</h2>
+        <div class="image-with-text__text">
+          <p>Paris Hilton has always believed your sparkle is your superpower. These are pieces made for the iconic, the bold, and the beautifully real — because sliving isn't a trend, it's a lifestyle. 💫</p>
+        </div>
+        <div class="image-with-text__cta">
+          <a href="#" class="btn btn-primary btn-lg">Discover More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- PRODUCT PAGE PREVIEW -->
+<!-- ═══════════════════════════════════ -->
+<section class="section-gap" style="background:var(--white);">
+  <div class="container">
+    <div class="preview-section" style="padding:0 0 40px;">
+      <p class="preview-label">Product Page</p>
+    </div>
+    <div class="product-layout">
+      <!-- Gallery -->
+      <div class="product-gallery" style="position:static;">
+        <div class="product-gallery__main">
+          <div style="width:100%;height:100%;min-height:500px;background:var(--pink-ultra);display:flex;align-items:center;justify-content:center;font-size:120px;">👑</div>
+        </div>
+        <div class="product-gallery__thumbs">
+          <div class="product-gallery__thumb active"><div style="width:100%;aspect-ratio:1;background:var(--pink-ultra);display:flex;align-items:center;justify-content:center;">💄</div></div>
+          <div class="product-gallery__thumb"><div style="width:100%;aspect-ratio:1;background:#FEF0F7;display:flex;align-items:center;justify-content:center;">💎</div></div>
+          <div class="product-gallery__thumb"><div style="width:100%;aspect-ratio:1;background:#FFF5FA;display:flex;align-items:center;justify-content:center;">🌸</div></div>
+          <div class="product-gallery__thumb"><div style="width:100%;aspect-ratio:1;background:var(--pink-ultra);display:flex;align-items:center;justify-content:center;">✨</div></div>
+          <div class="product-gallery__thumb"><div style="width:100%;aspect-ratio:1;background:#FEF0F7;display:flex;align-items:center;justify-content:center;">💖</div></div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="product-info">
+        <p class="product-info__vendor"><span>✦</span> Paris Hilton Beauty</p>
+        <h1 class="product-info__title">That's Hot Perfume EDP</h1>
+        <div class="product-info__rating">
+          <span class="stars" style="font-size:16px;">★★★★★</span>
+          <span class="product-info__rating-count">(1,204 reviews)</span>
+          <a href="#" class="product-info__rating-link">Read reviews</a>
+        </div>
+        <div class="product-info__price-block">
+          <span class="product-info__price product-info__price-sale">$66.50</span>
+          <span class="product-info__price-compare">$95.00</span>
+          <span class="product-info__savings">Save 30%</span>
+        </div>
+        <div class="product-info__urgency">
+          <span class="urgency-icon">🔥</span>
+          <span class="urgency-text"><strong>12 people</strong> have this in their bag right now.</span>
+        </div>
+
+        <!-- Size option -->
+        <div class="product-info__option">
+          <div class="product-info__option-label">
+            <span class="product-info__option-name">Size</span>
+            <span class="product-info__option-selected">100ml</span>
+          </div>
+          <div class="variant-pills">
+            <button class="variant-pill" type="button">30ml</button>
+            <button class="variant-pill active" type="button">100ml</button>
+            <button class="variant-pill" type="button">200ml</button>
+          </div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="product-info__option">
+          <div class="product-info__option-label">
+            <span class="product-info__option-name">Quantity</span>
+          </div>
+          <div class="quantity-selector">
+            <button class="quantity-btn" data-qty-dec>−</button>
+            <input class="quantity-input" type="number" value="1" min="1">
+            <button class="quantity-btn" data-qty-inc>+</button>
+          </div>
+        </div>
+
+        <!-- ATC -->
+        <div class="product-info__atc-row">
+          <button type="button" class="btn-atc-icon" aria-label="Wishlist">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="btn-atc" type="button">Add to Bag ✨</button>
+        </div>
+        <button class="btn-buy-now" type="button">Buy Now — Sliv Immediately 💫</button>
+
+        <div class="trust-badges">
+          <div class="trust-badge"><span class="trust-badge__icon">🚚</span><span class="trust-badge__text">Free Shipping Over $100</span></div>
+          <div class="trust-badge"><span class="trust-badge__icon">↩️</span><span class="trust-badge__text">Easy 30-Day Returns</span></div>
+          <div class="trust-badge"><span class="trust-badge__icon">🔒</span><span class="trust-badge__text">Secure Checkout</span></div>
+        </div>
+
+        <!-- Accordion -->
+        <div class="accordion">
+          <div class="accordion__item open">
+            <button class="accordion__trigger" type="button">
+              Description <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__body" style="max-height:200px;">
+              <div class="accordion__body-inner">
+                <p>Glow like the icon you are 💖 This luxe EDP blends warm florals with a hint of vanilla and sandalwood — the signature Paris Hilton sparkle in a bottle. Long-lasting, heads-turning, sliving-approved.</p>
+                <p>Notes: Pink grapefruit, peach blossom, jasmine, sandalwood, vanilla musk.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button">
+              Shipping & Returns <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__body" style="max-height:0;">
+              <div class="accordion__body-inner">
+                <p>Free standard shipping on orders over $100. 30-day hassle-free returns. 💖</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- TESTIMONIALS -->
+<!-- ═══════════════════════════════════ -->
+<section class="section-gap testimonials">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-header__eyebrow">The Reviews Are In</p>
+      <h2 class="section-header__title">They Said It's Iconic</h2>
+      <p class="section-header__subtitle">Real reviews from the sliving fam. 💖</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-card__stars">★★★★★</div>
+        <p class="testimonial-card__quote">Obsessed with everything — it's literally so iconic and the quality is amazing. I feel like a whole new person every time I wear it. That's hot! 💖</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">💖</div>
+          <div>
+            <p class="testimonial-card__name">Aria M.</p>
+            <p class="testimonial-card__handle">@aria_slives</p>
+            <p class="testimonial-card__verified">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--pink-hot)"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Verified Buyer
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-card__stars">★★★★★</div>
+        <p class="testimonial-card__quote">Just got my order and I'm literally crying? The packaging alone made me feel like Paris herself shipped it. I will never shop anywhere else. Sliving! ✨</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">✨</div>
+          <div>
+            <p class="testimonial-card__name">Jordan K.</p>
+            <p class="testimonial-card__handle">@jordank_sparkles</p>
+            <p class="testimonial-card__verified">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--pink-hot)"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Verified Buyer
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-card__stars">★★★★★</div>
+        <p class="testimonial-card__quote">Gift for my bestie and she absolutely lost it. The quality is insane, way better than expected. Both of us are now Paris-coded for life 💎</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar">💎</div>
+          <div>
+            <p class="testimonial-card__name">Riley T.</p>
+            <p class="testimonial-card__handle">@rileyt</p>
+            <p class="testimonial-card__verified">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--pink-hot)"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Verified Buyer
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- EMAIL SIGNUP -->
+<!-- ═══════════════════════════════════ -->
+<section class="section-gap email-signup">
+  <div class="container">
+    <div class="email-signup__inner">
+      <p class="email-signup__eyebrow">✦ Join The Sliving Fam ✦</p>
+      <h2 class="email-signup__title">Get <span>First Access</span> To New Drops</h2>
+      <p class="email-signup__subtitle">Sign up for exclusive drops, behind-the-scenes sparkle, and 15% off your first order. 💖</p>
+      <div class="email-signup__form">
+        <input type="email" class="email-signup__input" placeholder="Enter your email...">
+        <button class="email-signup__submit">Join ✨</button>
+      </div>
+      <p class="email-signup__disclaimer">By subscribing you agree to our Privacy Policy. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- CART DRAWER (preview open) -->
+<!-- ═══════════════════════════════════ -->
+<div class="page-overlay" id="page-overlay"></div>
+<div class="cart-drawer open" id="cart-drawer">
+  <div class="cart-drawer__header">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <h2 class="cart-drawer__title">Your Bag</h2>
+      <span class="cart-drawer__count">3</span>
+    </div>
+    <button class="cart-drawer__close" id="cart-close">✕</button>
+  </div>
+
+  <div class="cart-drawer__free-shipping">
+    <p class="cart-drawer__shipping-bar-label">Spend <span>$56.50</span> more for free shipping ✨</p>
+    <div class="cart-drawer__shipping-bar">
+      <div class="cart-drawer__shipping-fill" style="width:43%;"></div>
+    </div>
+  </div>
+
+  <div class="cart-drawer__items">
+    <div class="cart-item">
+      <div class="cart-item__img" style="background:var(--pink-ultra);width:80px;height:80px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;">💄</div>
+      <div class="cart-item__body">
+        <p class="cart-item__title">Iconic Glow Serum</p>
+        <p class="cart-item__variant">30ml</p>
+        <div class="cart-item__footer">
+          <div class="cart-item__qty">
+            <button class="cart-item__qty-btn">−</button>
+            <span class="cart-item__qty-num">1</span>
+            <button class="cart-item__qty-btn">+</button>
+          </div>
+          <span class="cart-item__price">$49.00</span>
+        </div>
+        <button class="cart-item__remove">Remove</button>
+      </div>
+    </div>
+    <div class="cart-item">
+      <div class="cart-item__img" style="background:#FEF0F7;width:80px;height:80px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;">👑</div>
+      <div class="cart-item__body">
+        <p class="cart-item__title">That's Hot Perfume EDP</p>
+        <p class="cart-item__variant">100ml</p>
+        <div class="cart-item__footer">
+          <div class="cart-item__qty">
+            <button class="cart-item__qty-btn">−</button>
+            <span class="cart-item__qty-num">2</span>
+            <button class="cart-item__qty-btn">+</button>
+          </div>
+          <span class="cart-item__price">$190.00</span>
+        </div>
+        <button class="cart-item__remove">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-drawer__footer">
+    <div class="cart-drawer__subtotal">
+      <span class="cart-drawer__subtotal-label">Subtotal</span>
+      <span class="cart-drawer__subtotal-price">$239.00</span>
+    </div>
+    <p class="cart-drawer__note">Taxes and shipping calculated at checkout.</p>
+    <a href="#" class="cart-drawer__checkout">Checkout — That's Hot 💖</a>
+    <button class="cart-drawer__continue" id="cart-continue">Continue Shopping →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ═══════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="footer-brand__wordmark">Paris Hilton</p>
+        <p class="footer-brand__tagline">✦ Leave a little sparkle wherever you go ✦</p>
+        <p class="footer-brand__desc">Paris Hilton's official store. Iconic drops, sliving essentials, and a whole lot of sparkle — made for you. 💖</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social__link" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="footer-social__link" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.77a8.16 8.16 0 0 0 4.77 1.52V6.84a4.85 4.85 0 0 1-1-.15z"/></svg>
+          </a>
+          <a href="#" class="footer-social__link" aria-label="X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="footer-social__link" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col__title">Shop</p>
+        <ul class="footer-col__links">
+          <li><a href="#">Beauty</a></li>
+          <li><a href="#">Fashion</a></li>
+          <li><a href="#">Fragrance</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Best Sellers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col__title">Help</p>
+        <ul class="footer-col__links">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col__title">About</p>
+        <ul class="footer-col__links">
+          <li><a href="#">Paris's Story</a></li>
+          <li><a href="#">11:11 Media</a></li>
+          <li><a href="#">Advocacy</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-bottom__copy">&copy; 2025 Paris Hilton. Made with <span class="footer-bottom__sparkle">✨</span> by 11:11 Media.</p>
+      <div class="footer-bottom__links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Refunds</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Sparkle cursor container -->
+<div id="sparkle-cursor" class="sparkle-cursor"></div>
+
+<!-- Toast -->
+<div class="toast show" style="opacity:1;transform:translateX(-50%) translateY(0);">
+  <span class="toast__icon">💖</span>
+  <span>That's Hot Perfume added to bag!</span>
+</div>
+
+<script src="assets/theme.js"></script>
+<script>
+  // Cart drawer toggle for preview
+  document.getElementById('cart-trigger')?.addEventListener('click', () => {
+    document.getElementById('cart-drawer').classList.toggle('open');
+    document.getElementById('page-overlay').classList.toggle('active');
+  });
+  document.getElementById('cart-close')?.addEventListener('click', () => {
+    document.getElementById('cart-drawer').classList.remove('open');
+    document.getElementById('page-overlay').classList.remove('active');
+  });
+  document.getElementById('cart-continue')?.addEventListener('click', () => {
+    document.getElementById('cart-drawer').classList.remove('open');
+    document.getElementById('page-overlay').classList.remove('active');
+  });
+  document.getElementById('page-overlay')?.addEventListener('click', () => {
+    document.getElementById('cart-drawer').classList.remove('open');
+    document.getElementById('page-overlay').classList.remove('active');
+  });
+
+  // Hide toast after 3s
+  setTimeout(() => document.querySelector('.toast')?.classList.remove('show'), 3000);
+</script>
+</body>
+</html>

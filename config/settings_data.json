@@ -1,0 +1,19 @@
+{
+  "current": {
+    "color_pink_hot": "#F04E98",
+    "color_pink_light": "#F99FC9",
+    "color_off_white": "#FDFCF7",
+    "color_black": "#0A0A0A",
+    "color_gold": "#C9A84C",
+    "font_body_size": 16,
+    "cart_type": "drawer",
+    "free_shipping_threshold": 10000,
+    "enable_sparkle_cursor": true,
+    "enable_scroll_animations": true,
+    "social_instagram": "https://www.instagram.com/parishilton",
+    "social_tiktok": "https://www.tiktok.com/@parishilton",
+    "social_twitter": "https://twitter.com/parishilton",
+    "social_youtube": "https://www.youtube.com/@ParisHilton",
+    "twitter_handle": "parishilton"
+  }
+}

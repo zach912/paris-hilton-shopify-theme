@@ -1,0 +1,131 @@
+{%- liquid
+  assign featured = product.featured_media
+  assign second_media = product.media[1]
+  assign first_variant = product.selected_or_first_available_variant
+  assign is_on_sale = false
+  if first_variant.compare_at_price > first_variant.price
+    assign is_on_sale = true
+  endif
+  assign is_new = false
+  if product.published_at > 'now' | date: '%s' | minus: 2592000
+    assign is_new = true
+  endif
+-%}
+
+<div class="product-card">
+
+  <div class="product-card__media">
+    <!-- Badges -->
+    <div class="product-card__badges">
+      {%- if is_on_sale -%}
+        {%- assign savings_pct = first_variant.compare_at_price | minus: first_variant.price | times: 100 | divided_by: first_variant.compare_at_price -%}
+        <span class="badge badge-pink">–{{ savings_pct }}%</span>
+      {%- endif -%}
+      {%- if product.tags contains 'bestseller' -%}
+        <span class="badge badge-gold">Bestseller ✦</span>
+      {%- elsif product.tags contains 'new' or is_new -%}
+        <span class="badge badge-light">New ✨</span>
+      {%- endif -%}
+      {%- unless first_variant.available -%}
+        <span class="badge badge-black">Sold Out</span>
+      {%- endunless -%}
+    </div>
+
+    <!-- Wishlist -->
+    <button class="product-card__wishlist" aria-label="Add to wishlist" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    </button>
+
+    <!-- Main Image -->
+    <a href="{{ product.url }}" aria-label="{{ product.title }}" tabindex="-1">
+      {%- if featured != blank -%}
+        <img
+          src="{{ featured | image_url: width: 600 }}"
+          srcset="{{ featured | image_url: width: 400 }} 400w,
+                  {{ featured | image_url: width: 600 }} 600w,
+                  {{ featured | image_url: width: 800 }} 800w"
+          sizes="(max-width: 480px) calc(50vw - 20px), (max-width: 1024px) calc(33vw - 20px), calc(25vw - 20px)"
+          alt="{{ featured.alt | default: product.title }}"
+          loading="lazy"
+          width="{{ featured.width }}"
+          height="{{ featured.height }}">
+      {%- else -%}
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;background:var(--pink-ultra);">💎</div>
+      {%- endif -%}
+
+      <!-- Hover Image -->
+      {%- if second_media != blank -%}
+        <img
+          class="product-card__media-alt"
+          src="{{ second_media | image_url: width: 600 }}"
+          alt="{{ second_media.alt | default: product.title }}"
+          loading="lazy"
+          width="{{ second_media.width }}"
+          height="{{ second_media.height }}"
+          aria-hidden="true">
+      {%- endif -%}
+    </a>
+
+    <!-- Quick Add -->
+    {%- if product.has_only_default_variant and first_variant.available -%}
+      <div class="product-card__quick-add">
+        <button
+          class="btn btn-white btn-sm btn-full"
+          data-quick-add="{{ first_variant.id }}"
+          type="button"
+          aria-label="Quick add {{ product.title }}">
+          Quick Add ✨
+        </button>
+      </div>
+    {%- elsif first_variant.available -%}
+      <div class="product-card__quick-add">
+        <a href="{{ product.url }}" class="btn btn-white btn-sm btn-full">
+          Choose Options
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <!-- Info -->
+  <div class="product-card__info">
+    {%- if product.vendor != blank -%}
+      <p class="product-card__vendor">{{ product.vendor }}</p>
+    {%- endif -%}
+
+    <a href="{{ product.url }}" class="product-card__title">{{ product.title }}</a>
+
+    <!-- Stars -->
+    <div class="product-card__stars">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <span class="stars-count">({{ product.metafields.reviews.rating_count | default: '—' }})</span>
+    </div>
+
+    <!-- Price -->
+    <div class="product-card__price">
+      <span class="price{% if is_on_sale %} price-sale{% endif %}">
+        {{ first_variant.price | money }}
+      </span>
+      {%- if is_on_sale -%}
+        <span class="price-compare">{{ first_variant.compare_at_price | money }}</span>
+      {%- endif -%}
+    </div>
+
+    <!-- Color swatches -->
+    {%- assign color_option = product.options_with_values | where: 'name', 'Color' | first -%}
+    {%- if color_option != blank -%}
+      <div class="product-card__color-swatches" aria-label="Available colors">
+        {%- for value in color_option.values -%}
+          <div
+            class="color-swatch{% if color_option.selected_value == value %} active{% endif %}"
+            style="background-color: {{ value | handleize | replace: '-', '' }};"
+            title="{{ value }}"
+            aria-label="{{ value }}">
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+</div>

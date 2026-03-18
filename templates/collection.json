@@ -1,0 +1,37 @@
+{
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "msg1": {
+          "type": "message",
+          "settings": {
+            "text": "✨ Free shipping on orders over $100 — That's Hot 💖"
+          }
+        }
+      },
+      "block_order": ["msg1"],
+      "settings": {
+        "show_bar": true,
+        "show_dismiss": true
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 24
+      }
+    },
+    "email_signup": {
+      "type": "email-signup",
+      "settings": {
+        "eyebrow": "Join The Sliving Fam",
+        "title": "Get [pink]First Access[/pink] To New Drops",
+        "subtitle": "Sign up for exclusive drops and 15% off your first order. 💖",
+        "input_placeholder": "Enter your email...",
+        "button_label": "Join ✨"
+      }
+    }
+  },
+  "order": ["announcement", "main", "email_signup"]
+}

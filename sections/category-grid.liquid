@@ -1,0 +1,92 @@
+<section class="section-gap">
+  <div class="container">
+
+    <div class="section-header" data-animate>
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="section-header__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="section-header__title">{{ section.settings.title }}</h2>
+    </div>
+
+    <div class="category-grid">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link }}" class="category-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 700 }}"
+              alt="{{ block.settings.title }}"
+              loading="lazy">
+          {%- else -%}
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a0a12,#2d0a1e);"></div>
+          {%- endif -%}
+          <div class="category-card__overlay"></div>
+          <div class="category-card__content">
+            <h3 class="category-card__title">{{ block.settings.title }}</h3>
+            <span class="category-card__cta">
+              Shop Now
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Shop By Category"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Find Your Sparkle"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Beauty"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Grid",
+      "blocks": [
+        { "type": "category", "settings": { "title": "Beauty" } },
+        { "type": "category", "settings": { "title": "Fashion" } },
+        { "type": "category", "settings": { "title": "Fragrance" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

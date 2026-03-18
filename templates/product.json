@@ -1,0 +1,38 @@
+{
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "msg1": {
+          "type": "message",
+          "settings": {
+            "text": "✨ Free shipping on orders over $100 — That's Hot 💖"
+          }
+        }
+      },
+      "block_order": ["msg1"],
+      "settings": {
+        "show_bar": true,
+        "show_dismiss": true
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "show_urgency": true,
+        "urgency_number": 12
+      }
+    },
+    "related": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "You'll Also Love",
+        "title": "More Sliving Picks",
+        "products_to_show": 4,
+        "show_view_all": false,
+        "background": "ultra"
+      }
+    }
+  },
+  "order": ["announcement", "main", "related"]
+}

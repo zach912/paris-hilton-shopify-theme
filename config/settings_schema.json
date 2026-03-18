@@ -1,0 +1,162 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Paris Hilton",
+    "theme_version": "1.0.0",
+    "theme_author": "11:11 Media",
+    "theme_documentation_url": "https://parrishilton.com",
+    "theme_support_url": "https://parrishilton.com/pages/contact"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_pink_hot",
+        "label": "Hot Pink (primary)",
+        "default": "#F04E98"
+      },
+      {
+        "type": "color",
+        "id": "color_pink_light",
+        "label": "Light Pink (accent)",
+        "default": "#F99FC9"
+      },
+      {
+        "type": "color",
+        "id": "color_off_white",
+        "label": "Off White (background)",
+        "default": "#FDFCF7"
+      },
+      {
+        "type": "color",
+        "id": "color_black",
+        "label": "Black (text)",
+        "default": "#0A0A0A"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Gold (accent)",
+        "default": "#C9A84C"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading font",
+        "default": "gowun_batang_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "open_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "font_body_size",
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "Body font size",
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "text",
+        "id": "twitter_handle",
+        "label": "Twitter/X handle",
+        "info": "Without the @ symbol"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          { "value": "drawer", "label": "Slide-out drawer" },
+          { "value": "page",   "label": "Cart page" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold (in cents)",
+        "default": 10000,
+        "info": "Enter amount in cents (e.g. 10000 = $100.00)"
+      }
+    ]
+  },
+  {
+    "name": "Animations",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_sparkle_cursor",
+        "label": "Enable sparkle cursor effect",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_scroll_animations",
+        "label": "Enable scroll animations",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter",
+        "label": "X / Twitter URL"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest",
+        "label": "Pinterest URL"
+      }
+    ]
+  }
+]

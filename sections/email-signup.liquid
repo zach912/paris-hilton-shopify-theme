@@ -1,0 +1,97 @@
+<section class="section-gap email-signup">
+  <div class="container">
+    <div class="email-signup__inner">
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="email-signup__eyebrow">✦ {{ section.settings.eyebrow }} ✦</p>
+      {%- endif -%}
+
+      <h2 class="email-signup__title">
+        {{ section.settings.title | replace: '[pink]', '<span>' | replace: '[/pink]', '</span>' }}
+      </h2>
+
+      {%- if section.settings.subtitle != blank -%}
+        <p class="email-signup__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+
+      {%- form 'customer', data-email-form: '' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="email-signup__form">
+          <label for="email-signup-input" class="visually-hidden">{{ section.settings.input_placeholder }}</label>
+          <input
+            type="email"
+            name="contact[email]"
+            id="email-signup-input"
+            class="email-signup__input"
+            placeholder="{{ section.settings.input_placeholder }}"
+            autocomplete="email"
+            required>
+          <button type="submit" class="email-signup__submit">
+            {{ section.settings.button_label }}
+          </button>
+        </div>
+
+        {%- if form.posted_successfully? -%}
+          <p style="color: var(--pink-light); font-size: 15px; margin-top: 12px;">
+            💖 You're officially part of the sliving fam! Check your inbox.
+          </p>
+        {%- endif -%}
+      {%- endform -%}
+
+      {%- if section.settings.disclaimer != blank -%}
+        <p class="email-signup__disclaimer">{{ section.settings.disclaimer }}</p>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Email Signup",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Join The Sliving Fam"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading (use [pink]text[/pink] for pink highlight)",
+      "default": "Get [pink]First Access[/pink] To New Drops"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Sign up for exclusive drops, behind-the-scenes sparkle, and 15% off your first order. 💖"
+    },
+    {
+      "type": "text",
+      "id": "input_placeholder",
+      "label": "Input placeholder",
+      "default": "Enter your email..."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Join ✨"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "By subscribing you agree to our Privacy Policy. Unsubscribe anytime."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Email Signup"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,122 @@
+{%- liquid
+  assign collection = collections[section.settings.collection]
+  assign products_limit = section.settings.products_to_show
+-%}
+
+<section class="section-gap bg-{{ section.settings.background }}">
+  <div class="container">
+
+    <div class="section-header" data-animate>
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="section-header__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      <h2 class="section-header__title">
+        {{ section.settings.title | default: collection.title }}
+      </h2>
+
+      {%- if section.settings.subtitle != blank -%}
+        <p class="section-header__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="collection-grid">
+      {%- if collection != blank -%}
+        {%- for product in collection.products limit: products_limit -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..products_limit) -%}
+          <div class="product-card">
+            <div class="product-card__media skeleton" style="aspect-ratio:3/4;"></div>
+            <div class="product-card__info">
+              <div class="skeleton" style="height:20px;width:60%;margin-bottom:8px;"></div>
+              <div class="skeleton" style="height:16px;width:80%;"></div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_view_all and collection.products_count > products_limit -%}
+      <div class="text-center" style="margin-top: 48px;">
+        <a href="{{ collection.url }}" class="btn btn-secondary btn-lg">
+          View All {{ section.settings.view_all_label | default: 'Products' }}
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "New Drops"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop The Collection"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Iconic pieces, sliving looks. That's hot. 💖"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "label": "Products to show",
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "pale",  "label": "Pale Pink" },
+        { "value": "ultra", "label": "Ultra Pink" }
+      ],
+      "default": "white"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all label",
+      "default": "Products"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

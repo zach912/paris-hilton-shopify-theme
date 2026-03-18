@@ -1,0 +1,110 @@
+<section class="section-gap">
+  <div class="container">
+    <div class="image-with-text{% if section.settings.layout == 'text_first' %} reverse{% endif %}">
+
+      <div class="image-with-text__media">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 900 }}"
+            srcset="{{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 900 }} 900w"
+            sizes="50vw"
+            alt="{{ section.settings.image.alt | default: section.settings.title }}"
+            loading="lazy">
+        {%- else -%}
+          <div style="background: var(--pink-ultra); width: 100%; height: 100%; min-height: 520px; display:flex;align-items:center;justify-content:center;font-size:80px;">💖</div>
+        {%- endif -%}
+      </div>
+
+      <div class="image-with-text__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="image-with-text__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+
+        <h2 class="image-with-text__title">{{ section.settings.title }}</h2>
+
+        {%- if section.settings.text != blank -%}
+          <div class="image-with-text__text">{{ section.settings.text }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank -%}
+          <div class="image-with-text__cta">
+            <a href="{{ section.settings.button_link }}"
+               class="btn btn-{{ section.settings.button_style }} btn-lg">
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with Text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "image_first", "label": "Image left, text right" },
+        { "value": "text_first",  "label": "Text left, image right" }
+      ],
+      "default": "image_first"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our Story"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Born To Sparkle"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Paris Hilton has always believed your sparkle is your superpower. These are pieces made for the iconic, the bold, and the beautifully real — because sliving isn't a trend, it's a lifestyle. 💫</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Discover More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        { "value": "primary",   "label": "Hot Pink" },
+        { "value": "secondary", "label": "Outlined" },
+        { "value": "dark",      "label": "Dark" }
+      ],
+      "default": "primary"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text"
+    }
+  ]
+}
+{% endschema %}

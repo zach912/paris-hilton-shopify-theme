@@ -1,0 +1,90 @@
+<div class="cart-drawer" id="cart-drawer" aria-label="Shopping bag" aria-modal="true" role="dialog">
+
+  <div class="cart-drawer__header">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <h2 class="cart-drawer__title">Your Bag</h2>
+      <span class="cart-drawer__count" data-cart-count aria-live="polite">{{ cart.item_count }}</span>
+    </div>
+    <button class="cart-drawer__close" aria-label="Close cart">✕</button>
+  </div>
+
+  <!-- Free Shipping Progress -->
+  {%- assign threshold = 10000 -%}
+  {%- assign progress_pct = cart.total_price | times: 100 | divided_by: threshold -%}
+  {%- if progress_pct > 100 -%}{%- assign progress_pct = 100 -%}{%- endif -%}
+
+  <div class="cart-drawer__free-shipping">
+    {%- if cart.total_price >= threshold -%}
+      <p class="cart-drawer__shipping-bar-label">✨ You qualify for free shipping!</p>
+    {%- else -%}
+      {%- assign remaining = threshold | minus: cart.total_price -%}
+      <p class="cart-drawer__shipping-bar-label">
+        Spend <span>{{ remaining | money }}</span> more for free shipping ✨
+      </p>
+    {%- endif -%}
+    <div class="cart-drawer__shipping-bar">
+      <div class="cart-drawer__shipping-fill" style="width: {{ progress_pct }}%;"></div>
+    </div>
+  </div>
+
+  <!-- Cart Items -->
+  <div class="cart-drawer__items">
+    {%- if cart.item_count == 0 -%}
+      <div class="cart-drawer__empty">
+        <div class="cart-drawer__empty-icon">🛍️</div>
+        <p class="cart-drawer__empty-title">Your bag is empty</p>
+        <p class="cart-drawer__empty-text">Time to add some sparkle to your life 💖</p>
+        <a href="/collections/all" class="btn btn-primary">Shop Now ✨</a>
+      </div>
+    {%- else -%}
+      {%- for item in cart.items -%}
+        <div class="cart-item" data-key="{{ item.key }}">
+          <a href="{{ item.url }}">
+            {%- if item.image -%}
+              <img class="cart-item__img"
+                src="{{ item.image | image_url: width: 160 }}"
+                alt="{{ item.title }}"
+                loading="lazy"
+                width="80" height="80">
+            {%- else -%}
+              <div class="cart-item__img" style="background:var(--pink-ultra);display:flex;align-items:center;justify-content:center;font-size:24px;">💎</div>
+            {%- endif -%}
+          </a>
+          <div class="cart-item__body">
+            <a href="{{ item.url }}" class="cart-item__title">{{ item.product_title }}</a>
+            {%- if item.variant_title != blank -%}
+              <p class="cart-item__variant">{{ item.variant_title }}</p>
+            {%- endif -%}
+            <div class="cart-item__footer">
+              <div class="cart-item__qty">
+                <button class="cart-item__qty-btn" data-qty-change="-1" data-key="{{ item.key }}" aria-label="Decrease">−</button>
+                <span class="cart-item__qty-num">{{ item.quantity }}</span>
+                <button class="cart-item__qty-btn" data-qty-change="1" data-key="{{ item.key }}" aria-label="Increase">+</button>
+              </div>
+              <span class="cart-item__price">{{ item.final_line_price | money }}</span>
+            </div>
+            <button class="cart-item__remove" data-cart-remove="{{ item.key }}" type="button">Remove</button>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+
+  <!-- Footer -->
+  {%- if cart.item_count > 0 -%}
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span class="cart-drawer__subtotal-label">Subtotal</span>
+        <span class="cart-drawer__subtotal-price">{{ cart.total_price | money }}</span>
+      </div>
+      <p class="cart-drawer__note">Taxes and shipping calculated at checkout.</p>
+      <a href="/checkout" class="cart-drawer__checkout">
+        Checkout — That's Hot 💖
+      </a>
+      <button class="cart-drawer__continue" onclick="document.querySelector('.cart-drawer').querySelector('.cart-drawer__close').click()" type="button">
+        Continue Shopping →
+      </button>
+    </div>
+  {%- endif -%}
+
+</div>

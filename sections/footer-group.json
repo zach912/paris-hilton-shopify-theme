@@ -1,0 +1,19 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "description": "Paris Hilton's official store. Iconic drops, sliving essentials, and a whole lot of sparkle — made for you. 💖",
+        "col1_title": "Shop",
+        "col1_menu": "footer",
+        "col2_title": "Help",
+        "col2_menu": "footer",
+        "col3_title": "About",
+        "col3_menu": "footer"
+      }
+    }
+  },
+  "order": ["footer"]
+}

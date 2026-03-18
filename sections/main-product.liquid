@@ -1,0 +1,271 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_media = product.featured_media
+-%}
+
+<script type="application/json" id="product-json">
+  {{ product | json }}
+</script>
+
+<section class="product-page">
+  <div class="container">
+    <div class="product-layout">
+
+      <!-- Gallery -->
+      <div class="product-gallery">
+        <div class="product-gallery__main" aria-label="Product image">
+          {%- if featured_media != blank -%}
+            <img
+              id="ProductFeaturedImage"
+              src="{{ featured_media | image_url: width: 900 }}"
+              alt="{{ featured_media.alt | default: product.title }}"
+              loading="eager"
+              fetchpriority="high"
+              width="{{ featured_media.width }}"
+              height="{{ featured_media.height }}">
+          {%- else -%}
+            <div style="width:100%;height:100%;background:var(--pink-ultra);display:flex;align-items:center;justify-content:center;font-size:80px;">💎</div>
+          {%- endif -%}
+        </div>
+
+        {%- if product.images.size > 1 -%}
+          <div class="product-gallery__thumbs" role="list">
+            {%- for media in product.media limit: 5 -%}
+              <div class="product-gallery__thumb{% if forloop.first %} active{% endif %}"
+                   role="listitem"
+                   tabindex="0"
+                   aria-label="View image {{ forloop.index }}">
+                <img
+                  src="{{ media | image_url: width: 200 }}"
+                  alt="{{ media.alt | default: product.title }}"
+                  loading="lazy"
+                  width="200"
+                  height="200">
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info">
+
+        {%- if product.vendor != blank -%}
+          <p class="product-info__vendor">
+            <span>✦</span> {{ product.vendor }}
+          </p>
+        {%- endif -%}
+
+        <h1 class="product-info__title">{{ product.title }}</h1>
+
+        <!-- Rating -->
+        <div class="product-info__rating">
+          <span class="stars">★★★★★</span>
+          <span class="product-info__rating-count">({{ product.metafields.reviews.rating_count | default: '127' }} reviews)</span>
+          <a href="#reviews" class="product-info__rating-link">Read reviews</a>
+        </div>
+
+        <!-- Price -->
+        <div class="product-info__price-block">
+          <span class="product-info__price{% if current_variant.compare_at_price > current_variant.price %} product-info__price-sale{% endif %}">
+            {{ current_variant.price | money }}
+          </span>
+          {%- if current_variant.compare_at_price > current_variant.price -%}
+            <span class="product-info__price-compare">{{ current_variant.compare_at_price | money }}</span>
+            {%- assign savings = current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price -%}
+            <span class="product-info__savings">Save {{ savings }}%</span>
+          {%- endif -%}
+        </div>
+
+        <!-- Urgency -->
+        {%- if section.settings.show_urgency -%}
+          <div class="product-info__urgency">
+            <span class="urgency-icon">🔥</span>
+            <span class="urgency-text">
+              <strong>{{ section.settings.urgency_number | default: '12' }} people</strong> have this in their bag right now.
+            </span>
+          </div>
+        {%- endif -%}
+
+        <!-- Form -->
+        {%- form 'product', product, data-product-form: '' -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="product-info__option">
+                <div class="product-info__option-label">
+                  <span class="product-info__option-name">{{ option.name }}</span>
+                  <span class="product-info__option-selected">{{ option.selected_value }}</span>
+                  {%- if option.name == 'Size' -%}
+                    <a href="#size-guide" class="product-info__size-guide">Size Guide</a>
+                  {%- endif -%}
+                </div>
+
+                <div class="variant-pills" role="radiogroup" aria-label="{{ option.name }}">
+                  {%- for value in option.values -%}
+                    <button
+                      type="button"
+                      class="variant-pill{% if option.selected_value == value %} active{% endif %}"
+                      data-option-group="{{ option.position }}"
+                      data-value="{{ value }}"
+                      role="radio"
+                      aria-checked="{{ option.selected_value == value }}"
+                      aria-label="{{ option.name }}: {{ value }}">
+                      {{ value }}
+                    </button>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          <!-- Quantity -->
+          <div class="product-info__option">
+            <div class="product-info__option-label">
+              <span class="product-info__option-name">Quantity</span>
+            </div>
+            <div class="quantity-selector">
+              <button type="button" class="quantity-btn" data-qty-dec aria-label="Decrease quantity">−</button>
+              <input type="number" name="quantity" class="quantity-input" value="1" min="1" aria-label="Quantity">
+              <button type="button" class="quantity-btn" data-qty-inc aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+
+          <!-- ATC Row -->
+          <div class="product-info__atc-row">
+            <button type="button" class="btn-atc-icon" aria-label="Add to wishlist">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+            <button type="submit"
+              name="add"
+              class="btn-atc"
+              {%- unless current_variant.available -%}disabled aria-disabled="true"{%- endunless -%}>
+              {%- if current_variant.available -%}
+                Add to Bag ✨
+              {%- else -%}
+                Sold Out
+              {%- endif -%}
+            </button>
+          </div>
+
+          <a href="/checkout" class="btn-buy-now">Buy Now — Sliv Immediately 💫</a>
+
+        {%- endform -%}
+
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <span class="trust-badge__icon">🚚</span>
+            <span class="trust-badge__text">Free Shipping Over $100</span>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-badge__icon">↩️</span>
+            <span class="trust-badge__text">Easy 30-Day Returns</span>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-badge__icon">🔒</span>
+            <span class="trust-badge__text">Secure Checkout</span>
+          </div>
+        </div>
+
+        <!-- Accordion: Description, Shipping, etc. -->
+        <div class="accordion">
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button">
+              Description
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              <div class="accordion__body-inner">
+                {{ product.description }}
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button">
+              Shipping & Returns
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              <div class="accordion__body-inner">
+                <p>Free standard shipping on orders over $100. Express shipping available at checkout.</p>
+                <p>We accept returns within 30 days of delivery. Items must be unworn and in original packaging.</p>
+                <p>💖 Because you deserve to sliv — hassle-free.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button">
+              Size & Fit
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              <div class="accordion__body-inner">
+                <p>Model is 5'9" and wearing a size S. For the best fit, we recommend sizing up if you're between sizes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sticky ATC Bar -->
+<div class="sticky-atc" id="sticky-atc" aria-hidden="true">
+  <div class="sticky-atc__inner">
+    <div class="sticky-atc__product">
+      {%- if featured_media -%}
+        <img class="sticky-atc__img"
+          src="{{ featured_media | image_url: width: 100 }}"
+          alt="{{ product.title }}">
+      {%- endif -%}
+      <div>
+        <p class="sticky-atc__name">{{ product.title }}</p>
+        <p class="sticky-atc__price">{{ current_variant.price | money }}</p>
+      </div>
+    </div>
+    <div class="sticky-atc__btn">
+      <button type="button"
+        class="btn btn-primary"
+        onclick="document.querySelector('[data-product-form]')?.querySelector('.btn-atc')?.click()">
+        Add to Bag ✨
+      </button>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_urgency",
+      "label": "Show urgency indicator",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "urgency_number",
+      "min": 5,
+      "max": 50,
+      "step": 1,
+      "label": "Urgency number",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product"
+    }
+  ]
+}
+{% endschema %}

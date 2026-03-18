@@ -1,0 +1,16 @@
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="{{ page_title | default: shop.name }}">
+<meta property="og:type" content="website">
+<meta property="og:description" content="{{ page_description | default: shop.description }}">
+
+{%- if page_image -%}
+  <meta property="og:image" content="{{ page_image | image_url: width: 1200 }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+{%- endif -%}
+
+{%- if settings.twitter_handle != blank -%}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@{{ settings.twitter_handle }}">
+{%- endif -%}
